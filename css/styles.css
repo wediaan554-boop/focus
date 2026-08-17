@@ -1,0 +1,199 @@
+/* Focus (فوكس) Design System - Focus Green Aesthetic */
+
+:root {
+  /* Color Tokens - Focus Green Palette */
+  --md-sys-color-primary: #15803d;
+  --md-sys-color-primary-container: #14532d;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-on-primary-container: #bbf7d0;
+
+  --md-sys-color-secondary: #16a34a;
+  --md-sys-color-secondary-container: #dcfce7;
+  --md-sys-color-on-secondary-container: #14532d;
+
+  --md-sys-color-tertiary: #166534;
+  --md-sys-color-tertiary-container: #22c55e;
+  --md-sys-color-on-tertiary-container: #ffffff;
+
+  --md-sys-color-background: #f6f9f6;
+  --md-sys-color-on-background: #111813;
+
+  --md-sys-color-surface: #f6f9f6;
+  --md-sys-color-on-surface: #111813;
+  --md-sys-color-surface-variant: #e2e9e3;
+  --md-sys-color-on-surface-variant: #3e4941;
+
+  --md-sys-color-surface-container-lowest: #ffffff;
+  --md-sys-color-surface-container-low: #f0f4f1;
+  --md-sys-color-surface-container: #eaefe9;
+  --md-sys-color-surface-container-high: #e3e9e3;
+
+  --md-sys-color-outline: #6e7971;
+  --md-sys-color-outline-variant: #bec9bf;
+
+  --md-sys-color-error: #ba1a1a;
+  --md-sys-color-error-container: #ffdad6;
+
+  /* Typography */
+  --font-family-arabic: 'Noto Sans Arabic', 'Inter', system-ui, sans-serif;
+  --font-family-latin: 'Inter', system-ui, sans-serif;
+}
+
+/* Dark Mode Overrides */
+html.dark {
+  --md-sys-color-background: #0f1912;
+  --md-sys-color-on-background: #e1e9e2;
+  --md-sys-color-surface: #0f1912;
+  --md-sys-color-on-surface: #e1e9e2;
+
+  --md-sys-color-surface-container-lowest: #142017;
+  --md-sys-color-surface-container-low: #18261c;
+  --md-sys-color-surface-container: #1e2e22;
+  --md-sys-color-surface-container-high: #243628;
+
+  --md-sys-color-primary: #4ade80;
+  --md-sys-color-primary-container: #14532d;
+  --md-sys-color-on-primary: #052e16;
+
+  --md-sys-color-surface-variant: #283a2c;
+  --md-sys-color-on-surface-variant: #c0cec2;
+
+  --md-sys-color-outline: #89988b;
+  --md-sys-color-outline-variant: #3c4c3e;
+}
+
+/* Global Setup */
+body {
+  font-family: var(--font-family-arabic);
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-background);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--md-sys-color-outline-variant);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--md-sys-color-outline);
+}
+
+/* Hide Scrollbar Utility */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Glassmorphism Header */
+.glass-header {
+  background: rgba(246, 249, 246, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+html.dark .glass-header {
+  background: rgba(15, 25, 18, 0.85);
+}
+
+/* Modal Overlay backdrop */
+.glass-modal {
+  background: rgba(15, 25, 18, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Interactive SVG Floorplan Table Styles */
+.table-available {
+  fill: #16a34a;
+  stroke: #ffffff;
+  stroke-width: 2px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0px 2px 4px rgba(22, 163, 74, 0.3));
+}
+.table-available:hover {
+  fill: #22c55e;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.table-occupied {
+  fill: #dc2626;
+  stroke: #ffffff;
+  stroke-width: 2px;
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.table-selected {
+  fill: #15803d !important;
+  stroke: #ffffff !important;
+  stroke-width: 4px !important;
+  filter: drop-shadow(0px 0px 8px rgba(34, 197, 94, 0.8));
+  animation: tablePulse 1.5s infinite alternate;
+}
+
+@keyframes tablePulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+
+/* Live Status Pulse Indicator */
+.pulse-live {
+  width: 10px;
+  height: 10px;
+  background-color: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  animation: pulseLive 1.8s infinite;
+}
+
+@keyframes pulseLive {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+/* Page Transition Animation */
+.page-fade-in {
+  animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card Hover Elevation */
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 8px 24px rgba(21, 128, 61, 0.12);
+}
